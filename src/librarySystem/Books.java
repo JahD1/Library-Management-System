@@ -46,7 +46,13 @@ public class Books {
 	public String getAuthor()
 	{
 		return author;
+	}	
+	public void printBookInfo()
+	{
+		System.out.println("Book Title: "+title);
+		System.out.println("Author: "+author);
+		System.out.println("Book ISBN: "+ISBN);
+		
 	}
-	
 
 }
