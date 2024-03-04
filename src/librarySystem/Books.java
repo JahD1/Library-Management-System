@@ -7,6 +7,7 @@ public class Books {
 	private String author;
 	
 	
+	
 	Books(){
 		
 		this.title = "no title yet";
@@ -14,11 +15,12 @@ public class Books {
 		this.ISBN = 0;
 	}
 	
-	Books(String name, String authorName, int bookID)
+	Books(String name, String authorName, int bookID, Library insertbook)
 	{
 		this.title = name;
 		this.author= authorName;
 		this.ISBN = bookID;
+		insertbook.insertBook(bookID, name);
 	}
 	
 	

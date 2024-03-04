@@ -6,17 +6,19 @@ public class User {
 	private String email;
 	private int libraryCardNum;
 	
+	
 	User()
 	{
 		this.name = "no name yet";
 		this.email = "no email yet";
 		this.libraryCardNum = 0;
 	}
-	User(String userName, String userEmail, int cardNumber)
+	User(String userName, String userEmail, int cardNumber, Library insertUser)
 	{
 		this.name = userName;
 		this.email = userEmail;
 		this.libraryCardNum = cardNumber;
+		insertUser.insertPatron(cardNumber, userName);
 	}
 	
 	public void setName(String userName)
