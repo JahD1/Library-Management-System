@@ -29,8 +29,9 @@ public class LibraryApp {
 		l1.showBooks();
 		
 		
-		l1.findBookByISBN(222);
-		l1.removeBook(1234);
+		l1.findbook(123);
+		l1.bookCheckout(1234);
+		/*l1.removeBook(1234);
 		
 		l1.removeBook(1254);
 		
@@ -38,7 +39,7 @@ public class LibraryApp {
 		User u1 = new User( "nadjah ", "nadjah@gmail.com",1234, l1);
 		
 		l1.showPatrons();
-		
+		*/
 		
 		
 		
