@@ -6,18 +6,14 @@ public class LibraryApp {
 
         Book newbook = new Book("Harry Potter ", "Nadjah " ,"Horror ", 12345);
 
-        newbook.lendBook();
-
         Library library = new Library();
         library.addBook(newbook);
 
-
-
-        library.displayAllBooks();
-
-        newbook. returnBook();
+        library.lendBook(12345);
 
         library.displayAllBooks();
+
+
         //library.bookCheckout(newbook);
     }
 }

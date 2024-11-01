@@ -1,10 +1,13 @@
 package librarySystem;
 
+// Import hashmap class to create a hashmap
 import java.util.HashMap;
 
+//Library class handles books and users
 public class Library {
 
-    private HashMap<Integer, Book> books = new HashMap<>();
+    //
+    private HashMap <Integer, Book> books = new HashMap<>();
     private HashMap <Integer, User> users = new HashMap<>();
 
     public void addBook(Book book) {
@@ -13,19 +16,54 @@ public class Library {
         } else
             books.put(book.getISBN(), book);
     }
-    public Book findBook(Book book)
+
+    public Book findBookByISBN(int ISBN)
     {
-        if(books.containsKey(book.getISBN()))
+        if(books.containsKey(ISBN))
         {
-            return books.get(book.getISBN());
-        }else
+            return books.get(ISBN);
+        }
+        else
             return null;
     }
-    public Book deleteBook(Book book)
+
+    public Book deleteBook(int ISBN)
     {
-        books.remove(book.getISBN());
-        System.out.println("Book removed from library");
-        return book;
+        if(books.containsKey(ISBN))
+        {
+            Book bookRemoved = books.get(ISBN);
+            books.remove(ISBN);
+            System.out.print("Book removed from library");
+            return bookRemoved;
+        }
+        else
+        {
+            System.out.println("Book not in library");
+            return null;
+        }
+    }
+    
+    public boolean lendBook (int ISBN)
+    {
+        if(books.containsKey(ISBN))
+        {
+            if(books.get(ISBN).getAvailabilitiy())
+            {
+                books.get(ISBN).lendBook();
+                return true;
+            }
+            else
+            {
+                System.out.print("Book Unavailable");
+                return false;
+            }
+        }
+        else
+        {
+            System.out.println("Book not in library");
+            return false;
+        }
+
     }
     public void displayAllBooks()
     {
@@ -69,7 +107,7 @@ public class Library {
         {
             books.get(book.getISBN()).getBookDetails();
             System.out.println("Book Checked Out");
-            deleteBook(book);
+           // deleteBook(books);
         }else
             System.out.println("Book not available for checkout");
     }
