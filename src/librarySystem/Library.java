@@ -153,5 +153,13 @@ public class Library {
         }
     }
 
+    public void displayAllUsers()
+    {
+        for(User user : users.values())
+        {
+            user.getUserDetails();
+        }
+    }
+
 
 }
