@@ -6,19 +6,27 @@ import java.util.HashMap;
 //Library class handles books and users
 public class Library {
 
-    //
+    //Collection of books and their attributes stored and identified by their ISBN
     private HashMap<Integer, Book> books = new HashMap<>();
+
+    //Collection of users  and their attributes stored and identified by their LibraryId
     private HashMap<Integer, User> users = new HashMap<>();
 
-    public void addBook(Book book) {
-        if (books.containsKey(book.getISBN())) {
+    //Adds book and its attributes to collection of books
+    public void addBook(Book book)
+    {
+        if (books.containsKey(book.getISBN()))
+        {
             System.out.println("Book already in Library, can not add");
         } else
             books.put(book.getISBN(), book);
     }
 
-    public Book findBookByISBN(int ISBN) {
-        if (books.containsKey(ISBN)) {
+    //Finds book using the ISBN and then returns the book to the after its found, null if not found
+    public Book findBookByISBN(int ISBN)
+    {
+        if (books.containsKey(ISBN))
+        {
             System.out.println("Book found");
             return books.get(ISBN);
         } else {
@@ -27,73 +35,103 @@ public class Library {
         }
     }
 
-    public Book deleteBook(int ISBN) {
-        if (books.containsKey(ISBN)) {
+    //Delete book by ISBN and then returns the book after removed.
+    public Book deleteBook(int ISBN)
+    {
+        if (books.containsKey(ISBN))
+        {
             Book bookRemoved = books.get(ISBN);
             books.remove(ISBN);
             System.out.println("Book removed from library");
             return bookRemoved;
-        } else {
+        }
+        else
+        {
             System.out.println("Book not in library");
             return null;
         }
     }
 
-    public boolean lendBook(int ISBN) {
-        if (books.containsKey(ISBN)) {
+    //Lends book to user by looking for book and availability & using ISBN & then using method lendBook in Book class
+    public boolean lendBook(int ISBN)
+    {
+        if (books.containsKey(ISBN))
+        {
             if (books.get(ISBN).getAvailabilitiy()) {
                 books.get(ISBN).lendBook();
-                System.out.print("Book borrowed");
+                System.out.println("Book borrowed");
                 return true;
             } else {
-                System.out.print("Book Unavailable");
+                System.out.println("Book Unavailable");
                 return false;
             }
-        } else {
+        }
+        else
+        {
             System.out.println("Book not in library");
             return false;
         }
     }
 
-    public boolean returnBook(int ISBN) {
-        if (books.containsKey(ISBN)) {
-            if (!books.get(ISBN).getAvailabilitiy()) {
+    //Returns book to library using ISBN if unavailable & then using return book method in book class
+    public boolean returnBook(int ISBN)
+    {
+        if (books.containsKey(ISBN))
+        {
+            if (!books.get(ISBN).getAvailabilitiy())
+            {
                 books.get(ISBN).returnBook();
                 System.out.println("Book Returned");
                 return true;
-            } else {
+            }
+            else
+            {
                 System.out.println("The book is already in the library");
                 return false;
             }
-        } else {
+        }
+        else
+        {
             System.out.println("The book cannot be returned because it is not registered");
             return false;
         }
     }
 
-    public void displayAllBooks() {
-        for (Book book : books.values()) {
+    //Displays the collection of books
+    public void displayAllBooks()
+    {
+        for (Book book : books.values())
+        {
             book.getBookDetails();
         }
     }
 
-    public void addUser(User user) {
-        if (users.containsKey(user.getLibraryId())) {
+    //Adds user and their attributes to collection of users
+    public void addUser(User user)
+    {
+
+        if (users.containsKey(user.getLibraryId()))
+        {
             System.out.println("User already in Library, can not add");
-        } else {
+        } else
+        {
             users.put(user.getLibraryId(), user);
         }
     }
 
-    public User findUser(int libraryID) {
-
-        if (users.containsKey(libraryID)) {
+    //Finds user using their libraryID and then returns the users after found, null if not found
+    public User findUser(int libraryID)
+    {
+        if (users.containsKey(libraryID))
+        {
             return users.get(libraryID);
-        } else {
+        } else
+        {
             return null;
         }
     }
 
+    //Deletes user from collection by using libraryID and the returns the removed users information. null if user not in the collection
     public User deleteUser(int libraryID)
     {
         if (users.containsKey(libraryID)) {
@@ -107,6 +145,7 @@ public class Library {
         }
     }
 
+    //Disables user membership using libraryID if active
     public boolean removeMemberStatus(int libraryID)
     {
         if (users.containsKey(libraryID))
@@ -130,6 +169,7 @@ public class Library {
         }
     }
 
+    //Reactivates User member using libraryID if unactive
     public boolean activateMemberStatus(int libraryID)
     {
         if(users.containsKey(libraryID))
@@ -153,6 +193,7 @@ public class Library {
         }
     }
 
+    //Displays all users information from the collection
     public void displayAllUsers()
     {
         for(User user : users.values())
@@ -160,6 +201,4 @@ public class Library {
             user.getUserDetails();
         }
     }
-
-
 }

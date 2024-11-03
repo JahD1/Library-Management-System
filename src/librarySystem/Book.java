@@ -83,8 +83,7 @@ public class Book {
         return genre;
     }
 
-
-    //Displays the details of the book
+    //Displays the details of a book
     public void getBookDetails() {
         System.out.println("ISBN: " + ISBN);
         System.out.println("Title: " + title);

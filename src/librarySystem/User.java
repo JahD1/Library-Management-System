@@ -6,24 +6,22 @@ public class User {
     private String firstName;
     private String lastName;
     private String emailAddress;
-    private String borough;
     private int libraryId;
 
     //Allows you to see if a person is a member
     private boolean isAMember;
 
     //Constructor creates new user with personal info and they are set to not a member
-    public User(String firstName, String lastName,String emailAddress, String borough)
+    public User(String firstName, String lastName,String emailAddress, int libraryId)
     {
         this.firstName = firstName;
         this.lastName = lastName;
         this.emailAddress = emailAddress;
-        this.borough = borough;
-        this.libraryId = 0;
+        this.libraryId = libraryId;
+
 
         //Membership status of user
         isAMember = false;
-
     }
 
     //Allows users that exist first name to be changed
@@ -61,18 +59,11 @@ public class User {
     {
         if(isAMember)
         {
+            System.out.println("Library ID changed");
             this.libraryId = libraryId;
         }
         else
-        {
-            System.out.println("Become a member and try again. You are not a member of the library");
-        }
-    }
-
-    //Allows borough of a user that exist to be changed
-    public void setBorough (String borough)
-    {
-        this.borough = borough;
+            System.out.println("To edit libraryID please activate user member status");
     }
 
     //Returns the first name of user
@@ -99,25 +90,26 @@ public class User {
         return libraryId;
     }
 
-    //Returns the borugh of where the user is from
-    public String getBorough()
-    {
-        return borough;
-    }
-
     //Returns the member status of a user
     public boolean isAMember()
     {
         return isAMember;
     }
 
-    //Displays user information
+    //Displays a user information
     public void getUserDetails()
     {
         System.out.println("First Name: " + firstName);
         System.out.println("Last Name: " + lastName);
         System.out.println("Email Address: " + emailAddress);
         System.out.println("Library ID#: " + libraryId);
-        System.out.println("Borough: " + borough);
+        if(isAMember)
+        {
+            System.out.println("Member Status: Active");
+        }
+        else
+        {
+            System.out.println("Member Status: Inactive");
+        }
     }
 }
