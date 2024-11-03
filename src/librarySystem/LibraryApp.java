@@ -13,7 +13,29 @@ public class LibraryApp {
 
         library.displayAllBooks();
 
+        library.returnBook(12345);
 
-        //library.bookCheckout(newbook);
+        library.displayAllBooks();
+
+        library.deleteBook(12345);
+
+        System.out.println("After book removed: ");
+        library.displayAllBooks();
+
+        Book newbook2 = new Book("Nadjah ", "Nadjah ", "Beauty", 12346);
+
+        library.addBook(newbook2);
+
+        library.displayAllBooks();
+
+        library.addBook(newbook);
+
+        library.displayAllBooks();
+
+        library.findBookByISBN(12345);
+
+
+
+
     }
 }
